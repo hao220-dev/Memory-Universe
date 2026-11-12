@@ -1,0 +1,102 @@
+# ============================================================
+# Memory Universe GitHub 发布用忽略规则
+# 原则：只提交源代码、配置模板、锁文件与必要静态资源
+# 不提交：依赖、构建产物、内置 JRE、后端 JAR、安装包、用户数据、密钥
+# ============================================================
+
+# ---------- 依赖 ----------
+node_modules/
+frontend/node_modules/
+desktop/node_modules/
+.pnpm-store/
+.yarn/
+
+# ---------- 前端构建产物与缓存 ----------
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+dist-ssr/
+.vite/
+.cache/
+.eslintcache
+coverage/
+.nyc_output/
+
+# ---------- 后端构建产物 ----------
+backend/target/
+/backend/data/
+/backend/logs/
+*.log
+*.hprof
+
+# ---------- 桌面端构建产物 ----------
+desktop/dist/
+desktop/release/
+*.tsbuildinfo
+
+# ---------- 桌面端打包资源（体积大 / 可由构建步骤重新生成） ----------
+# 注意：desktop/resources/icon.ico 是安装包图标，必须保留提交
+desktop/resources/runtime/
+desktop/resources/backend/
+*.jar
+
+# ---------- 本机用户数据（数据库 / 照片 / 音乐 / 日志） ----------
+/data/
+/uploads/
+/test-uploads/
+/media/
+/music/
+*.mv.db
+*.trace.db
+*.sqlite
+*.sqlite3
+
+# ---------- 密钥与本地配置 ----------
+.env
+.env.*
+!.env.example
+secrets.json
+**/config/secrets.json
+application-local.yml
+application-local.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# ---------- 安装包与快捷方式 ----------
+*.exe
+*.msi
+*.blockmap
+*.lnk
+
+# ---------- 压缩包与临时备份 ----------
+*.zip
+*.7z
+*.rar
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# ---------- 截图临时目录 ----------
+/.screenshots/
+
+# ---------- AI / IDE / 编辑器 ----------
+.trae/
+.cursor/
+.claude/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.iml
+*.suo
+*.user
+
+# ---------- 系统文件 ----------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini

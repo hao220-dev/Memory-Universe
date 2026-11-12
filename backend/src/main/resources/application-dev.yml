@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/memory_universe?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: memory123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+
+app:
+  jwt:
+    # 仅本地开发使用；生产环境务必通过环境变量覆盖
+    secret: memory-universe-dev-only-secret-key-change-before-production
+  minio:
+    access-key: minioadmin
+    secret-key: minioadmin
+  bootstrap:
+    admin:
+      # 不再提供可直接使用的默认口令；首次进入馆长登录页时设置
+      password: ${ADMIN_PASSWORD:}
+      allow-setup: true
+
+logging:
+  level:
+    com.memoryuniverse: debug

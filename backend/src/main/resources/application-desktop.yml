@@ -1,0 +1,31 @@
+server:
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    # 优雅关闭时最多等待 10 秒让进行中的请求与 H2 写入完成
+    timeout-per-shutdown-phase: 10s
+  datasource:
+    url: jdbc:h2:file:${MU_DATA_DIR:./data}/data/db/memory-universe;MODE=MySQL;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+
+app:
+  bootstrap:
+    admin:
+      # 桌面端不内置初始口令，由用户在馆长登录页首次设置
+      allow-setup: true
+  storage:
+    type: local
+    local:
+      root: ${MU_DATA_DIR:./data}/uploads
+      public-base-url: /media
+
+logging:
+  level:
+    com.memoryuniverse: info
